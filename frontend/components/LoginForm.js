@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PT from 'prop-types'
+
 
 const initialFormValues = {
   username: '',
   password: '',
 }
 export default function LoginForm(props) {
+  let navigate = useNavigate();
   const [values, setValues] = useState(initialFormValues)
   // ✨ where are my props? Destructure them here
+  const { login } = props;
 
   const onChange = evt => {
     const { id, value } = evt.target
-    setValues({ ...values, [id]: value })
+    setValues({ ...values, [id]: value });
   }
 
   const onSubmit = evt => {
-    evt.preventDefault()
-    // ✨ implement
+    evt.preventDefault();
+    login(values);
+    setValues(initialFormValues);
   }
 
   const isDisabled = () => {
@@ -24,6 +29,8 @@ export default function LoginForm(props) {
     // Trimmed username must be >= 3, and
     // trimmed password must be >= 8 for
     // the button to become enabled
+    return !(values.username.trim().length >= 3 &&
+      values.password.trim().length >= 8)
   }
 
   return (
