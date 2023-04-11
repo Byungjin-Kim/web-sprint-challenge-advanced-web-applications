@@ -3,12 +3,20 @@
 
 import Spinner from "./Spinner"
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 
 test('sanity', () => {
   expect(true).toBe(true)
-})
+});
 
-test('spinner renders', () => {
-  render(<Spinner on={true} />)
-})
+test('renders without error', () => {
+  render(<Spinner on={true} />);
+});
+
+test('renders the message of Please wait passed as prop', () => {
+  render(<Spinner on={true} />);
+  const please = screen.queryByText(/Please wait.../i);
+  expect(please).toBeTruthy;
+});
+
+
