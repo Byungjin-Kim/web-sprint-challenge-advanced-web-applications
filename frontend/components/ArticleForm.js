@@ -47,6 +47,7 @@ export default function ArticleForm(props) {
 
   const handleCancel = () => {
     setCurrentArticleId(null);
+    setValues(initialFormValues);
   }
 
   const isDisabled = () => {
@@ -86,7 +87,7 @@ export default function ArticleForm(props) {
       </select>
       <div className="button-group">
         <button disabled={isDisabled()} id="submitArticle">Submit</button>
-        <button onClick={() => handleCancel()}>Cancel edit</button>
+        <button type="button" onClick={() => handleCancel()}>Cancel edit</button>
       </div>
     </form>
   )

@@ -18,5 +18,3 @@ test('renders the message of Please wait passed as prop', () => {
   const please = screen.queryByText(/Please wait.../i);
   expect(please).toBeTruthy;
 });
-
-

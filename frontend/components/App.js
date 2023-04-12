@@ -111,7 +111,7 @@ export default function App() {
     axiosWithAuth().put(`${articlesUrl}/${article_id}`, article)
       .then(res => {
         setMessage(res.data.message)
-        const updateArticles = articles.map((update) => update.article_id === article.article_id ? res.data.article : update)
+        const updateArticles = articles.map((update) => (update.article_id === article.article_id) ? res.data.article : update)
         setArticles(updateArticles);
         setCurrentArticleId();
         setSpinnerOn(false)

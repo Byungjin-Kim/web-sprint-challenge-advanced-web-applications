@@ -18,12 +18,12 @@ export default function Articles(props) {
     if (!localStorage.getItem("token")) {
       redirectToLogin();
     } else {
-      getArticles()
+      getArticles();
     }
   }, [])
 
   const handleDelete = (id) => {
-    deleteArticle(id)
+    deleteArticle(id);
   }
 
 
